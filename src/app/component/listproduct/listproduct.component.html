@@ -1,0 +1,35 @@
+<div class="example-container-central">
+  <div class="button-manual">
+    <button mat-raised-button color="primary" (click)="addProduct()">Agregar</button>
+  </div>
+  <div class="example-container">
+    <mat-form-field>
+      <mat-label>Buscar</mat-label>
+      <input matInput (input)="changeFilter($event.target)" placeholder="Televisor">
+      <mat-icon matSuffix>search</mat-icon>
+    </mat-form-field>
+  
+    <mat-form-field>
+      <mat-label>Ordenar por</mat-label>
+      <mat-select (selectionChange)="changeFilter($event)">
+        <mat-option [value]="0">Precio de mayor a menor</mat-option>
+        <mat-option [value]="1">Precio de menor a mayor</mat-option>
+        <mat-option [value]="2">Nombre A a la Z</mat-option>
+        <mat-option [value]="3">Nombre Z a la A</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <div class="class-paginator" *ngIf="dataProduct">
+      <mat-paginator  [length]="lengthPaginator" [pageSize]="12" (page)="getPaginatorData($event)"> 
+      </mat-paginator>
+    </div> 
+  </div>  
+  </div>
+  <p></p>
+  <mat-divider></mat-divider>
+    <p></p>
+        <div class="grid-container" *ngIf="dataProduct">
+            <div class="grid-item"   *ngFor="let element of dataProduct | slice: lowValue: highValue; index as i">
+                <app-cardproduct  [detailProduct]="element" [indexProduct]="i" [validateDetail]="false"></app-cardproduct>
+            </div>
+      </div>
+      

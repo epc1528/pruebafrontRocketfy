@@ -1,0 +1,41 @@
+.grid-container {
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    padding: 10px;
+    margin: 0 100px 0 100px;
+  }
+  div .grid-item {
+    padding: 10px;
+  }
+  .example-container-central {
+    margin: 10px 100px 0 100px;
+    background-color: white;
+    padding-top: 10px;
+    display: flex;
+  }
+
+  .example-container {
+    text-align: end;
+    padding-top: 10px;
+    width: 80%;
+  }
+
+  .button-manual{
+    text-align: start;
+    padding-top: 10px;
+    width: 20%;
+  }
+
+  .button-manual button{
+    margin: 10px 10px 15px 10px;
+    text-align: left !important;
+  }
+
+  .example-container mat-form-field + mat-form-field {
+    margin-left: 8px;
+  }
+  .class-paginator {
+    display: inline-flex;
+    flex-direction: column;
+    margin-left: 8px;
+  }

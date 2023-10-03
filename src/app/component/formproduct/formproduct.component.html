@@ -1,0 +1,64 @@
+    <form [formGroup]="dataProduct" class="example-container">
+        <div class="content-field1">
+            <mat-form-field appearance="outline">
+                <mat-label>nombre</mat-label>
+                <input matInput formControlName="name">
+              </mat-form-field>
+
+              <mat-form-field appearance="outline">
+                <mat-label>SKU</mat-label>
+                <input matInput formControlName="sku">
+              </mat-form-field>
+        </div>
+        <div class="content-field2">
+          <mat-form-field appearance="outline">
+            <mat-label>Imagen</mat-label>
+            <input matInput (input)="changeImage()" formControlName="image">
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label>Stock</mat-label>
+            <input matInput formControlName="stock" type="number" class="example-right-align" placeholder="0">
+        </mat-form-field>
+        </div>
+        <div class="content-field3">
+            <mat-form-field appearance="outline">
+                <mat-label>Detalle</mat-label>
+                <textarea matInput formControlName="detail"></textarea>
+              </mat-form-field>
+        </div>
+        <div class="content-field4">
+            <mat-form-field appearance="outline">
+                <mat-label>Precio</mat-label>
+                <input matInput formControlName="price" (input)="getValueChange()" type="number" class="example-right-align" placeholder="0">
+                <span matTextPrefix>$&nbsp;</span>
+              </mat-form-field>
+
+              <mat-checkbox formControlName="isdiscount" (change)="showInput($event)">Aplicar Decuento</mat-checkbox>
+
+              <mat-form-field *ngIf="showInputValidator" appearance="outline">
+                <mat-label>Descuento %</mat-label>
+                <input matInput formControlName="discount" (input)="getValueChange()" type="number" class="example-right-align" placeholder="0">
+            </mat-form-field>
+
+            <mat-form-field *ngIf="showInputValidator" appearance="outline">
+                <mat-label>Valor final</mat-label>
+                <input matInput formControlName="pricediscount" type="number" class="example-right-align" placeholder="0" value="{{calculateValue}}">
+            </mat-form-field>
+
+        </div>
+
+        <div class="content-field5" *ngIf="listTag">
+            <mat-form-field style="margin-top: 5px;">
+                <mat-label>Categorias</mat-label>
+                <mat-select multiple formControlName="tag">
+                  <mat-option *ngFor="let topping of listTag" [value]="topping.name">{{topping.name}}</mat-option>
+                </mat-select>
+              </mat-form-field>
+        </div>
+        <p></p>
+        <div class="button-manual">
+          <button mat-raised-button color="primary" *ngIf="updateValidator" (click)="updateProduct()">Guardar</button>
+          <button mat-raised-button color="primary" *ngIf="!updateValidator" (click)="saveProduct()">Guardar</button>
+        </div>
+    </form>  

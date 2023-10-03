@@ -1,0 +1,22 @@
+<div class="example-container" style="text-align: end; padding-right: 20px;">
+    <div *ngIf="detailValidator" class="button-manual">
+        <button mat-raised-button color="primary" (click)="updateValidator()">Editar</button>
+        <button mat-raised-button color="warn" (click)="deleteProduct()">Eliminar</button>
+    </div>
+
+    <div *ngIf="!detailValidator" class="button-manual">
+          <button mat-raised-button color="warn" (click)="updateValidator()">Cancelar</button>
+    </div>
+  </div>
+  <p></p>
+<div class="example-container">
+    <div *ngIf="detailValidator">
+        <app-cardproduct [detailProduct]="dataProduct" [validateDetail]="true" ></app-cardproduct>    
+    </div>
+    
+    <div *ngIf="!detailValidator">
+        <app-formproduct [detailProduct]="dataProduct" [updateValidator]="true"></app-formproduct>
+    </div>
+        
+    
+</div>

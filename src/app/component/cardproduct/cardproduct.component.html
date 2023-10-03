@@ -1,0 +1,45 @@
+<mat-card *ngIf="!validateDetail" [ngClass]="{'example-card': !validateDetail, 'example-card-modal': validateDetail}">
+    <mat-card-header>
+        <mat-card-title class="no-wrap">{{ detailProduct.name }}</mat-card-title>
+        <mat-card-subtitle>SKU: {{detailProduct.sku}}</mat-card-subtitle>
+    </mat-card-header>
+    <img class="height-img" src="{{ detailProduct.image }}" height="300px">
+    <mat-card-content>
+     <span>Categorias: </span><div *ngFor="let tags of detailProduct.tag" class="text-muted">{{tags}}</div>
+      <br>
+       <div>
+         <small [ngClass]="{'text-discount-value' : validatorDiscount(detailProduct)}">{{detailProduct.price | currency: 'COP $'}}</small>
+         <span *ngIf="validatorDiscount(detailProduct)" class="text-discount">-{{detailProduct.discount}}%</span>
+         <br>
+         <small *ngIf="validatorDiscount(detailProduct)">{{ detailProduct.pricediscount | currency: 'COP $' }}</small>
+       </div>
+    </mat-card-content>
+    <mat-card-footer class="card-footer" *ngIf="!validateDetail">
+      <button mat-stroked-button color="primary" (click)="sendIndex(detailProduct)">Detalle</button>
+    </mat-card-footer>
+  </mat-card>
+
+  <div *ngIf="validateDetail" class="grid-container">
+    <mat-card class="grid-item" [ngClass]="{'example-card': !validateDetail, 'example-card-modal': validateDetail}">
+      <mat-card-header>
+        <mat-card-title>{{ detailProduct.name }}</mat-card-title>
+        <mat-card-subtitle>SKU: {{detailProduct.sku}}</mat-card-subtitle>
+      </mat-card-header>
+      <img mat-card-image src="{{ detailProduct.image }}">
+    </mat-card>
+    <mat-card class="grid-item"  [ngClass]="{'example-card': !validateDetail, 'example-card-modal': validateDetail}">
+      <mat-card-content>
+        <span>Categorias: </span><div *ngFor="let tags of detailProduct.tag" class="text-muted">{{tags}}</div>
+         <br>
+          <div>
+            <small [ngClass]="{'text-discount-value' : validatorDiscount(detailProduct)}">{{detailProduct.price | currency: 'COP $'}}</small>
+            <span *ngIf="validatorDiscount(detailProduct)" class="text-discount">-{{detailProduct.discount}}%</span>
+            <br>
+            <small *ngIf="validatorDiscount(detailProduct)">{{ detailProduct.pricediscount | currency: 'COP $' }}</small>
+          </div>
+          <p>
+           <b>Descripcion: </b>{{detailProduct.detail}}
+          </p>
+       </mat-card-content>
+      </mat-card>
+  </div>

@@ -1,0 +1,9 @@
+.example-container {
+    margin: 10px 100px 10px 100px;
+    background-color: white;
+    padding-top: 10px;
+  }
+
+  .button-manual button{
+    margin: 10px 10px 15px 10px;
+  }
